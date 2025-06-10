@@ -29,3 +29,19 @@ Sign_in.addEventListener('click', () => {
     Cpass.value = "";
     Name.focus();
 });
+
+// Gorilla sound on hover (run immediately, not inside DOMContentLoaded)
+const gorillaLogo = document.getElementById('gorilla-logo');
+const gorillaSound = document.getElementById('gorilla-sound');
+if (gorillaLogo && gorillaSound) {
+  gorillaLogo.addEventListener('mouseenter', () => {
+    gorillaSound.currentTime = 0;
+    gorillaSound.play().catch(() => {
+      // If autoplay is blocked, do nothing
+    });
+  });
+  gorillaLogo.addEventListener('mouseleave', () => {
+    gorillaSound.pause();
+    gorillaSound.currentTime = 0;
+  });
+}
